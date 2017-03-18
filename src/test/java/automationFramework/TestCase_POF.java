@@ -34,16 +34,18 @@ public class TestCase_POF {
 
         homePage.navigateToMyAccount();
         loginPage.login();
+            Thread.sleep(4000);
         accPage.navigateToAccessories();
-        accPage.clickApple();
+        /*accPage.clickApple();
         accPage.addProductToCart();
-        chkPage.updateQty(32);
+        chkPage.updateQty(32);*/
+
+        accPage.addFirstNProductsToCart(8);
+            Thread.sleep(3000);
         chkPage.navigateToCheckOut();
         chkPage.verifyTotal();
 
         //Thread.sleep(5000);
-
-
 
 
         driver.close();
