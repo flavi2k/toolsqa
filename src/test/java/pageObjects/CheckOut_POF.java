@@ -60,16 +60,35 @@ public class CheckOut_POF {
         //create a list that contains all the elements related to price
         List<WebElement> priceList = driver.findElements(By.cssSelector("#checkout_page_container .checkout_cart .pricedisplay"));
 
-        ListIterator<WebElement> iter = priceList.listIterator();
+        String[] totalPriceArray= new String[quantityList.size()];
+        String[] priceArray = new String[quantityList.size()];
+        int it = 0;
 
-        for(int i=1; i<=priceList.size(); i++)
-        {
-            iter.next();
-            if (i % 3 == 0) iter.remove();
+        //priceArray contains the price of each item
+        for (int i=0; i<priceList.size();i+=3) {
+            System.out.println("priceArray (" + i + ")= " + priceList.get(i).getText());
+            priceArray[it] = priceList.get(i).getText();
+            it++;
         }
 
-        //print the rows
-        System.out.println("Total selected rows are " + quantityList.size());
+        it=0;
+        //totalPriceArray contains the total price of each item (quantity * price)
+        for (int i=1; i<priceList.size();i+=3) {
+            System.out.println("totalPriceArray (" + i + ")= " + priceList.get(i).getText());
+            totalPriceArray[it] = priceList.get(i).getText();
+            it++;
+        }
+
+        String[] priceString =new String[quantityList.size()];
+
+        Double[] price = new Double [quantityList.size()];
+
+        String[] totalPriceString = new String [quantityList.size()];
+
+        Double[] totalPrice = new Double[quantityList.size()];
+
+        //print the number of rows
+        System.out.println("Total rows: " + quantityList.size());
 
         int sum = 0;
         double verifyPrice;
@@ -80,30 +99,33 @@ public class CheckOut_POF {
             String name = nameList.get(i).getText();
             int quantity = Integer.parseInt(quantityList.get(i).getAttribute("value"));
 
-            String priceString = priceList.get(i*2).getText().replaceAll("[$,]", "");
+            System.out.println("_____________________");
+            System.out.print("\tQuantity [" + i + "]= " + quantity);
+            System.out.print("\tpriceArray [" + i + "]= " + priceArray[i]);
+            System.out.print("\ttotalPriceArray [" + i + "]= " + totalPriceArray[i]+"\n");
+            System.out.println("_____________________");
 
-            Double price = Double.parseDouble(priceString);
+            priceString[i] = priceArray[i].replaceAll("[$,]", "");
+            price[i] = Double.parseDouble(priceString[i]);
+            totalPriceString[i] = totalPriceArray[i].replaceAll("[$,]", "");
+            totalPrice[i] = Double.parseDouble(totalPriceString[i]);
 
-            String totalPriceString = priceList.get(((i*2)+1)).getText().replaceAll("[$,]", "");
-
-            Double totalPrice = Double.parseDouble(totalPriceString);
-
-            // print the text
-            System.out.print("Name is " + name);
-            System.out.print("\t\t Quantity is " + quantity);
-            System.out.print("\t\t Price is " + price);
-            System.out.print("\t\t Total Price is " + totalPrice);
-            System.out.println("");
+            // print
+            System.out.print("Name: " + name);
+            System.out.print("\t\t Quantity: " + quantity);
+            System.out.print("\t\t Price: " + price[i]);
+            System.out.print("\t\t Total Price: " + totalPrice[i]);
+           // System.out.println("");
 
             //calculate total quantity
             sum = sum + quantity;
-            verifyPrice = quantity * price;
-            System.out.println("\t\t Total Price verified is: " + verifyPrice);
+            verifyPrice = quantity * price[i];
+            System.out.println("\t\t Total Price verified: " + verifyPrice);
             verifyTotalPrice = verifyTotalPrice + verifyPrice;
         }
 
         //print total quantity and total price
-        System.out.println("Total quantity is " + sum);
+        System.out.println("Total quantity: " + sum);
         System.out.println("Total price: " + verifyTotalPrice);
     }
 }
