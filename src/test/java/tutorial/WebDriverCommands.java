@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -16,7 +17,7 @@ public class WebDriverCommands {
     private static WebDriver driver;
     private static String URL ="http://store.demoQA.com/";
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         System.setProperty("webdriver.chrome.driver", "D:\\\\KIT\\chromedriver.exe");
         driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
@@ -120,6 +121,72 @@ public class WebDriverCommands {
         System.out.println("\t\tWebDriver Commands - DropDown & Multiple Select Operations");
         driver.get("http://toolsqa.wpengine.com/automation-practice-form");
 
+        // Step 3: Select 'Continents' Drop down ( Use Id to identify the element )
+        // Find Select element of "Single selection" using ID locator.
+        Select oSelect = new Select(driver.findElement(By.id("continents")));
+
+        // Step 4:) Select option 'Europe' (Use selectByIndex)
+        oSelect.selectByVisibleText("Europe");
+
+        // Using sleep command so that changes can be noticed
+        Thread.sleep(2000);
+
+        // Step 5: Select option 'Africa' now (Use selectByVisibleText)
+        oSelect.selectByIndex(2);
+        Thread.sleep(2000);
+
+        // Step 6: Print all the options for the selected drop down and select one option of your choice
+        // Get the size of the Select element
+        List<WebElement> oSize = oSelect.getOptions();
+        int iListSize = oSize.size();
+        System.out.println("size is: " + iListSize);
+
+        // Setting up the loop to print all the options
+        for(int i =0; i < iListSize ; i++){
+            // Storing the value of the option
+            String sValue = oSelect.getOptions().get(i).getText();
+
+            // Printing the stored value
+            System.out.println(sValue);
+            // Putting a check on each option that if any of the option is equal to 'Africa" then select it
+            /*if(sValue.equals("Africa")){
+                oSelect.selectByIndex(i);
+                break;
+            }*/
+        }
+
+        Select oSelect2 = new Select(driver.findElement(By.name("selenium_commands")));
+
+        // Step 4: Select option 'Browser Commands' and then deselect it (Use selectByIndex and deselectByIndex)
+        oSelect2.selectByIndex(0);
+        Thread.sleep(2000);
+        oSelect2.deselectByIndex(0);
+
+        // Step 5: Select option 'Navigation Commands'  and then deselect it (Use selectByVisibleText and deselectByVisibleText)
+        oSelect2.selectByVisibleText("Navigation Commands");
+        Thread.sleep(2000);
+        oSelect2.deselectByVisibleText("Navigation Commands");
+
+        // Step 6: Print and select all the options for the selected Multiple selection list.
+        List<WebElement> oSize2 = oSelect2.getOptions();
+        int iListSize2 = oSize2.size();
+
+        // Setting up the loop to print all the options
+        for(int i =0; i < iListSize2 ; i++){
+            // Storing the value of the option
+            String sValue2 = oSelect2.getOptions().get(i).getText();
+
+            // Printing the stored value
+            System.out.println(sValue2);
+
+            // Selecting all the elements one by one
+            oSelect2.selectByIndex(i);
+            Thread.sleep(2000);
+        }
+
+        // Step 7: Deselect all
+        oSelect2.deselectAll();
+
 
         //close current window
         System.out.println("Close window");
@@ -127,12 +194,6 @@ public class WebDriverCommands {
 
         //close all windows
        // driver.quit();
-
-
-
-
-
-
 
 
     }
