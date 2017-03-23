@@ -1,6 +1,3 @@
-radio buttons
-check boxes
-drop down
-multiple selects
 web-tables
 find element
+wait commands / advance WebDriver Waits
