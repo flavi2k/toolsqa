@@ -23,7 +23,7 @@ public class iFrames {
         driver.get("http://toolsqa.com/iframe-practice-page/");
 
         List<WebElement> iframeElements = driver.findElements(By.tagName("iframe"));
-        System.out.println("The total number of iframes are " + iframeElements.size());
+        System.out.println("The total number of iframes is " + iframeElements.size());
         for(WebElement el:iframeElements){
             System.out.println("iframe name: "+el.getAttribute("name") + "\tiframe id: " +el.getAttribute("id"));
         }
@@ -36,6 +36,7 @@ public class iFrames {
 
         //switch to frame by name or id
         driver.switchTo().frame("IF1");
+        //select the radio button located inside the frame
         driver.findElement(By.id("exp-1")).click();
 
         Thread.sleep(1000);
