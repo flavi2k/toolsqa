@@ -18,7 +18,9 @@ public class WebDriverCommands {
     private static String URL ="http://store.demoQA.com/";
 
     public static void main(String[] args) throws InterruptedException {
-        System.setProperty("webdriver.chrome.driver", "D:\\\\KIT\\chromedriver.exe");
+        String workingDir = System.getProperty("user.dir");
+        System.out.println("working directory: "+ workingDir);
+        System.setProperty("webdriver.chrome.driver", workingDir+"/src/test/java/selenium/chromedriver.exe");
         driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
@@ -190,10 +192,10 @@ public class WebDriverCommands {
 
         //close current window
         System.out.println("Close window");
-        //driver.close();
+        driver.close();
 
         //close all windows
-       // driver.quit();
+        driver.quit();
 
 
     }

@@ -1,5 +1,6 @@
 package automationFramework;
 
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.PageFactory;
@@ -7,6 +8,7 @@ import pageObjects.AccessoriesPage_POF;
 import pageObjects.CheckOut_POF;
 import pageObjects.HomePage_POF;
 import pageObjects.LoginPage_POF;
+
 
 import java.util.concurrent.TimeUnit;
 
@@ -17,7 +19,10 @@ public class TestCase_POF {
      private static WebDriver driver;
 
         public static void main(String[] args) throws InterruptedException {
-        System.setProperty("webdriver.chrome.driver", "D:\\\\KIT\\chromedriver.exe");
+
+           String workingDir = System.getProperty("user.dir");
+           System.out.println("working directory: "+ workingDir);
+           System.setProperty("webdriver.chrome.driver", workingDir+"/src/test/java/selenium/chromedriver.exe");
         driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.get("http://store.demoqa.com/");

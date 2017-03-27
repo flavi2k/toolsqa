@@ -15,10 +15,11 @@ public class RadioButton_CheckBox {
     private static WebDriver driver;
 
     public static void main(String[] args) {
-        System.setProperty("webdriver.chrome.driver", "D:\\\\KIT\\chromedriver.exe");
+        String workingDir = System.getProperty("user.dir");
+        System.out.println("working directory: "+ workingDir);
+        System.setProperty("webdriver.chrome.driver", workingDir+"/src/test/java/selenium/chromedriver.exe");
         driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-
         driver.get("http://toolsqa.wpengine.com/automation-practice-form");
 
         List<WebElement> oRadio = driver.findElements(By.name("exp"));
