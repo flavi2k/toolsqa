@@ -15,7 +15,9 @@ public class AllLinks {
 
     private static WebDriver driver;
 
+
     public static void main(String[] args) {
+
         String workingDir = System.getProperty("user.dir");
         System.out.println("working directory: "+ workingDir);
         System.setProperty("webdriver.chrome.driver", workingDir+"/src/test/java/selenium/chromedriver.exe");
@@ -35,7 +37,7 @@ public class AllLinks {
         for(int i =0; i<checkboxes.size(); i++){
             System.out.println("\t\t"+checkboxes.get(i).getAttribute("name")+
             "\t\t"+checkboxes.get(i).getAttribute("value"));
-        }
+                    }
 
         //all RadioButtons on a Webpage
         List<WebElement> radioButtons = driver.findElements(By.xpath("//input[@type='radio']"));
@@ -53,13 +55,13 @@ public class AllLinks {
             //get the ids and names of the drop downs
             String ids = dropdowns.get(i).getAttribute("id");
             String names = dropdowns.get(i).getAttribute("name");
-            //print the id of the dropdowns
+            //print the name of the dropdowns
             System.out.println(names.toUpperCase());
 
             //create a new element for each dropdown element
             WebElement dropDownElement = driver.findElement(By.id(ids));
 
-            //!!!!find an element using parent element as starting point
+            //!!!!find an element using the parent element as starting point
             //create a list of options for each dropdown
             List<WebElement> options = dropDownElement.findElements(By.tagName("option"));
             for(int j=0; j<options.size();j++){
