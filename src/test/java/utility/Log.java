@@ -1,6 +1,7 @@
 package utility;
 
 
+import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.Logger;
 
 /**
@@ -10,6 +11,7 @@ public class Log {
 
     //initialize Log4j logs
     private static Logger Log = Logger.getLogger(Log.class.getName());
+
 
     //this is to print log for the beginning of the test case
     public static void startTestCase (String sTestCaseName){
@@ -31,7 +33,7 @@ public class Log {
 
     // Need to create these methods, so that they can be called
     public static void info(String message) {
-        Log.info(message);
+       Log.info(message);
     }
 
     public static void warn(String message) {
