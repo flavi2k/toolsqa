@@ -8,7 +8,7 @@ public class Constant {
     public static final String URL_store = "http://www.store.demoqa.com";
     public static final String Username = "clr";
     public static final String Password = "test123";
-    public static final String Path_TestData = workingDir+"/src/test/java/tutorial/utility";
+    public static final String Path_TestData = workingDir+"/src/test/java/tutorial/testData/";
     public static final String File_TestData = "TestData.xlsx";
 
 

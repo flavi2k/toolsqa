@@ -38,7 +38,11 @@ public class LoginPage_POF {
         login.click();
 
         //Assert.assertEquals("Howdy, clr", driver.findElement(By.xpath("//a[contains(.,'Howdy, clr')]")).getText().toString());
+    }
 
-
+    public void login(String username, String password) {
+        log.sendKeys(username);
+        pwd.sendKeys(password);
+        login.click();
     }
 }

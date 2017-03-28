@@ -18,7 +18,7 @@ public class ExcelUtils {
     private static XSSFCell Cell;
     private static XSSFRow Row;
 
-    //This method is to set the File path and to open the Excel file, Pass Excel Path and Sheetname as Arguments to this method
+    //This method is to set the File path and to open the Excel file; Pass Excel Path and Sheetname as Arguments to this method
     public static void setExcelFile(String Path, String SheetName) throws Exception {
         try{
             //open the excel file
