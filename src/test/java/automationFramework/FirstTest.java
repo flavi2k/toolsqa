@@ -1,16 +1,13 @@
 package automationFramework;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.PageFactory;
 import pageObjects.HomePage_POF;
 import pageObjects.LoginPage_POF;
-import tutorial.utility.Constant;
-import tutorial.utility.ExcelUtils;
+import utility.Constant;
+import utility.ExcelUtils;
 
-import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 public class FirstTest {
