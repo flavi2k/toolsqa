@@ -24,7 +24,7 @@ public class LoginPage_POF {
     private WebElement login;
 
     @FindBy (id = "account_logout")
-    private WebElement logOut;
+    public WebElement logOutButton;
 
 
 

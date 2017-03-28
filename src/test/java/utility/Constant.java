@@ -10,6 +10,7 @@ public class Constant {
     public static final String Password = "test123";
     public static final String Path_TestData = workingDir+"/src/test/java/testData/";
     public static final String File_TestData = "TestData.xlsx";
+    public static final String Path_ChromeDriver = workingDir+"/src/test/java/selenium/chromedriver.exe";
 
 
 

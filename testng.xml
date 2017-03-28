@@ -1,0 +1,12 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="Test - Suite" >
+    <test name="Tools QA" >
+        <parameter name="sUsername" value="clr"/>
+        <parameter name="sPassword" value="test123"/>
+        <classes>
+            <class name="automationFramework.FirstTestTestNG"/>
+            <class name="automationFramework.FirstTest"/>
+            <class name="automationFramework.TestCase_POF"/>
+        </classes>
+    </test>
+</suite>
