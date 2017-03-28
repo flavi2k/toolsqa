@@ -5,6 +5,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import utility.Constant;
 
 /**
  * Created by Flavian on 13-Mar-17.
@@ -33,8 +34,8 @@ public class LoginPage_POF {
     }
 
     public void login() {
-        log.sendKeys("clr");
-        pwd.sendKeys("test123");
+        log.sendKeys(Constant.Username);
+        pwd.sendKeys(Constant.Password);
         login.click();
 
         //Assert.assertEquals("Howdy, clr", driver.findElement(By.xpath("//a[contains(.,'Howdy, clr')]")).getText().toString());
